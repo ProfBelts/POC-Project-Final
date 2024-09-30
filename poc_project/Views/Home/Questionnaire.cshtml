@@ -1,0 +1,69 @@
+﻿@model poc_project.Models.ViewModels.QuestionnaireViewModel
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    var organization = HttpContextAccessor.HttpContext.Session.GetString("Organization");
+
+}
+
+<!-- Bootstrap CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+
+
+<h2>Double Materiality Questionnaire</h2>
+
+<form method="post" asp-action="QuestionnaireSubmit">
+    <h4>Personal Information</h4>
+    <div class="stakeholderInfo contentSection">
+        <label asp-for="Stakeholder.Name" ></label>
+        <input type="text" asp-for="Stakeholder.Name" value="@Model.Stakeholder.Name" required />
+
+        <label asp-for="Stakeholder.Organization"></label>
+        <input type="text" asp-for="Stakeholder.Organization" value="@organization" required />
+
+        <label asp-for="Stakeholder.Role"></label>
+        <input type="text" asp-for="Stakeholder.Role" value="@Model.Stakeholder?.Role" required />
+
+        <label asp-for="Stakeholder.Category"></label>
+        <input type="text" asp-for="Stakeholder.Category" value="@Model.Stakeholder?.Category" required />
+    </div>
+
+    <h4>Issues</h4>
+  <div class="issues contentSection">
+    @for (int index = 0; index < Model.MaterialIssues.Count; index++)
+    {
+        var issue = Model.MaterialIssues[index];
+        var response = Model.Responses.FirstOrDefault(r => r.MaterialIssueId == issue.IssueId);
+
+        <div class="issue-container">
+            <label>@issue.IssueName</label>
+            <div class="radio-group">
+                @for (int i = 1; i <= 5; i++)
+                {
+
+                    <input type="radio" id="issueRelevance_@issue.IssueId-@i"
+                           asp-for="Responses[@index].RelevanceScore"
+                           value="@i"
+                          />
+                    <label for="issueRelevance_@issue.IssueId-@i">@i</label>
+                }
+            </div>
+
+            <textarea asp-for="Responses[@index].Comments" rows="3" placeholder="Add your comments here...">@response?.Comments</textarea>
+            <input type="hidden" asp-for="Responses[@index].MaterialIssueId" value="@issue.IssueId" />
+        </div>
+    }
+</div>
+    <button type="submit" name="action" value="submit">Submit</button>
+    <button type="submit" name="action" value="save">Save for Later</button>
+</form>
+
+<link href="~/css/questionnaire.css" rel="stylesheet" type="text/css" asp-append-version="true" />

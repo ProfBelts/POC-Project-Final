@@ -1,0 +1,83 @@
+﻿@model List<poc_project.Models.ViewModels.ResponseViewModel>
+
+<!-- Bootstrap CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<h2>@Model.FirstOrDefault()?.Organization</h2>
+
+<table class="table responsive-table" id="responsesTable">
+    <thead>
+        <tr>
+            <th>Issue Name</th>
+            <th>Issue Category</th>
+            <th id="relevanceScoreHeader" style="cursor:pointer;">Relevance Score &#9650;</th>
+            <th>Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var response in Model)
+        {
+            <tr>
+                <td>@response.IssueName</td>
+                <td>@response.IssueCategory</td>
+                <td>
+                    <div class="response-rating">
+                        @for (int j = 1; j <= 5; j++)
+                        {
+                            if (j <= response.RelevanceScore)
+                            {
+                                <span class="star">★</span>
+                            }
+                            else
+                            {
+                                <span class="star">☆</span>
+                            }
+                        }
+                    </div>
+                    <span class="score-value" style="display:none;">@response.RelevanceScore</span>
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(response.Comments))
+                    {
+                        <a href="#" class="expand-comment" data-toggle="modal" data-target="#commentModal-@response.IssueName.Replace(" ", "")">Expand</a>
+                    }
+                    else
+                    {
+                        <span>No comments</span>
+                    }
+                </td>
+            </tr>
+
+            <!-- Modal for Comments -->
+            <div class="modal fade" id="commentModal-@response.IssueName.Replace(" ", "")" tabindex="-1" aria-labelledby="commentModalLabel-@response.IssueName.Replace(" ", "")" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="commentModalLabel-@response.IssueName.Replace(" ", "")">@response.IssueName</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            @Html.Raw(response.Comments)
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        
+    </tbody>
+</table>
+
+<script src="~/js/sort.js" asp-append-version="true" />
+
+<link href="~/css/results.css" rel="stylesheet" type="text/css" asp-append-version="true" />
