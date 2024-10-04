@@ -1,0 +1,80 @@
+﻿﻿ /* Style the container */
+form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for headings */
+h2 {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+h4 {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Style the input field */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+    /* Change border color on focus */
+    input[type="text"]:focus {
+        border-color: #4CAF50;
+        outline: none;
+    }
+
+/* Style the button */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+    /* Button hover effect */
+    button:hover {
+        background-color: #45a049;
+    }
+
+/* Center form container */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Responsive design for mobile */
+@media screen and (max-width: 600px) {
+    form {
+        padding: 15px;
+    }
+
+    input[type="text"], button {
+        font-size: 14px;
+    }
+}

@@ -139,3 +139,4 @@ C:\Users\profb\source\repos\poc_project\poc_project\obj\Debug\net8.0\ref\poc_pro
 C:\Users\profb\source\repos\poc_project\poc_project\bin\Debug\net8.0\poc_project.staticwebassets.runtime.json
 C:\Users\profb\source\repos\poc_project\poc_project\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\profb\source\repos\poc_project\poc_project\obj\Debug\net8.0\scopedcss\projectbundle\poc_project.bundle.scp.css
+C:\Users\profb\source\repos\poc_project\poc_project\obj\Debug\net8.0\poc_project.sourcelink.json

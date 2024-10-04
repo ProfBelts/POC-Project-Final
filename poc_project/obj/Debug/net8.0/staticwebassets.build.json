@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "h82WbQUsspXlrBMbWtnnrEeElN18bo2MgVmHplus6sk=",
+  "Hash": "A4WWfaba+uIrIQpG3s6RYg0k4B0WLO3sX2CfS9UZ6Rc=",
   "Source": "poc_project",
   "BasePath": "_content/poc_project",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\profb\\source\\repos\\poc_project\\poc_project\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\poc_project.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\profb\\source\\repos\\poc_project\\poc_project\\wwwroot\\css\\home.css",
+      "SourceId": "poc_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\profb\\source\\repos\\poc_project\\poc_project\\wwwroot\\",
+      "BasePath": "_content/poc_project",
+      "RelativePath": "css/home.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\home.css"
     },
     {
       "Identity": "C:\\Users\\profb\\source\\repos\\poc_project\\poc_project\\wwwroot\\css\\questionnaire.css",

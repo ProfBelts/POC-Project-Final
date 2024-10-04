@@ -4,7 +4,8 @@
 
 @{
     var organization = HttpContextAccessor.HttpContext.Session.GetString("Organization");
-
+    string[] techRoles = new string[] { "Software Developer", "DevOps Engineer", "Data Scientist", "Cloud Architect", "Security Analyst", "System Administrator", "Tech Lead", "Product Manager" };
+    string[] categories = new string[] { "Internal", "External", "Investors", "Employees", "Tech Partners", "Customers", "Vendors" };
 }
 
 <!-- Bootstrap CSS -->
@@ -30,10 +31,23 @@
         <input type="text" asp-for="Stakeholder.Organization" value="@organization" required />
 
         <label asp-for="Stakeholder.Role"></label>
-        <input type="text" asp-for="Stakeholder.Role" value="@Model.Stakeholder?.Role" required />
+        <select asp-for="Stakeholder.Role" class="form-control" required>
+            <option value="">Select Role</option>
+            @foreach (var role in techRoles)
+            {
+                <option value="@role">@role</option>
+            }
+        </select>
 
         <label asp-for="Stakeholder.Category"></label>
-        <input type="text" asp-for="Stakeholder.Category" value="@Model.Stakeholder?.Category" required />
+        <select asp-for="Stakeholder.Category" class="form-control" required>
+            <option value="">Select Category</option>
+            @foreach (var category in categories)
+            {
+                <option value="@category">@category</option>
+            }
+        </select>
+
     </div>
 
     <h4>Issues</h4>
@@ -51,7 +65,7 @@
 
                     <input type="radio" id="issueRelevance_@issue.IssueId-@i"
                            asp-for="Responses[@index].RelevanceScore"
-                           value="@i"
+                           value="@i" required
                           />
                     <label for="issueRelevance_@issue.IssueId-@i">@i</label>
                 }

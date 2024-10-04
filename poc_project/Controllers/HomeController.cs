@@ -87,7 +87,6 @@ namespace poc_project.Controllers
         {
             if (action == "submit")
             {
-                // Check if the stakeholder exists in the database
                 var existingStakeholder = await dbContext.Stakeholders
                     .FirstOrDefaultAsync(s => s.Organization == model.Stakeholder.Organization);
 
@@ -110,7 +109,6 @@ namespace poc_project.Controllers
                 }
                 else
                 {
-                    // Use the existing stakeholder
                     model.Stakeholder.StakeholderId = existingStakeholder.StakeholderId;
                 }
 
@@ -223,11 +221,15 @@ namespace poc_project.Controllers
             return RedirectToAction("Response");
 
         }
-
-
         public IActionResult Response()
         {
             var organization = HttpContext.Session.GetString("Organization");
+
+
+            if(organization == null)
+            {
+                return RedirectToAction("Index");
+            }
 
             var responses = dbContext.ResponseRelevances
             .Join(dbContext.Stakeholders,

@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\poc_project.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\profb\\source\\repos\\poc_project\\poc_project\\wwwroot\\css\\home.css",
+      "PackagePath": "staticwebassets\\css\\home.css"
+    },
+    {
       "Id": "C:\\Users\\profb\\source\\repos\\poc_project\\poc_project\\wwwroot\\css\\questionnaire.css",
       "PackagePath": "staticwebassets\\css\\questionnaire.css"
     },
